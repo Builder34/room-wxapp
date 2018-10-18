@@ -1,0 +1,19 @@
+<template name='zim-upload-view'>
+  <view class='upload-frame'>
+    <view class='prew-img-view' wx:for='{{fileTemps}}' wx:key='{{index}}' >
+      <block wx:if='{{item.type==0}}'>
+        <image src='{{item.url}}' mode="aspectFill" class='preview-img' data-group='{{fileTemps}}' 
+          data-current='{{item.url}}' bindtap='bindPreviewImage'></image>
+      </block>
+      <block wx:else>
+        <image src='{{item.thumbImgUrl==""?"../../images/background.png":item.thumbImgUrl}}' class='video-prew-img'></image>
+        <text class='play-btn iconfont icon-icon-' bindtap='bindPlayVideo' data-videourl='{{item.url}}'></text>
+      </block>
+      <icon class='delete-img' type='clear' color='#FF6666' size='16' bindtap='bindDeleteMedia'></icon>
+    </view>
+    <view class='upload-add-btn' bindtap='bindChooseType' hidden='{{fileTemps.length>=9}}'>
+      <text class='iconfont icon-tianjia'></text>
+      <text>添加照片/视频</text>
+    </view>
+  </view>
+</template>

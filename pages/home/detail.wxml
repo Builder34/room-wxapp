@@ -1,0 +1,117 @@
+
+<swiper class='image-swiper' duration='300' bindchange='bindSwiperChange' interval='4000' autoplay='true' circular='true'>
+  <swiper-item wx:for='{{room.mediaEntityList}}' wx:for-item='item' 
+  wx:key='' data-index='{{index}}' item-id='{{index}}'>
+    <block wx:if='{{item.mediaType == 0}}'>
+      <image src='{{item.mediaUrl}}' mode="aspectFill" data-group='{{room.mediaEntityList}}' data-current='{{item.mediaUrl}}' bindtap='bindPreviewImage'></image>
+    </block>
+    <block wx:else>
+      <image src='https://builder34image.oss-cn-shenzhen.aliyuncs.com/builder/video_bg.jpg' mode="aspectFill" class='video-prew-img'></image>
+        <text style='left:{{(windowWidth-70)/2}}px; top:70px;' class='play-btn-lg iconfont icon-icon-' bindtap='bindPlayVideo' 
+        data-videourl='{{item.mediaUrl}}'>
+        </text>
+    </block>
+  </swiper-item>
+</swiper>
+<view class='swiper-star' style='top: 32px; left:{{windowWidth-38}}px' wx:if='{{apiVersion=="v.beta"}}'>
+  <text class='iconfont icon-star {{room.star ? "" : "unstared"}}' bindtap='bindStar' data-id='{{room.id}}'></text>
+</view>
+<view class='swiper-footers' style='top: 182px; left:{{windowWidth-38}}px'>
+  {{currentTab}}/{{room.mediaEntityList.length}}
+</view>
+<view class='room-title-view'>
+{{room.postTitle}}<text class='pv-text'>{{room.pvCount}}次浏览</text>
+</view>
+<view class='row-view' wx:if='{{apiVersion == "v.final"}}'>
+  <view class='creator-view-item'>
+      <image class='creator-profile' mode="aspectFill" src='https://builder34image.oss-cn-shenzhen.aliyuncs.com/builder/mon.jpg'></image>
+  </view>
+  <view class='creator-view-item'>
+    <view class='create-by'>{{room.createBy}}</view>
+    <view>{{room.updateTime}}</view>
+  </view>
+  <view class='creator-view-item'>
+    <view class='creator-contact-view'>
+      <text class='iconfont icon-wechat' bindtap='bindWechatNumToClipboard' data-wechat='{{room.wechat}}'></text> 
+      <text class='iconfont icon-phone' bindtap='bindCallPhone' data-phone='{{room.phone}}'></text>
+      <text class='iconfont icon-star {{room.star ? "" : "unstared"}}' bindtap='bindStar' data-id='{{room.id}}'></text>
+    </view>
+  </view>
+</view>
+<view class='row-view info-view' wx:if='{{apiVersion == "v.final"}}'>
+  <view class='info-view-item'>
+    <view class='item-blod item-red'>{{room.rentalPrice}}元/月</view>
+    <view>{{room.roomPaytype}}</view>  
+  </view>
+  <view class='info-view-item'>
+    <view class='item-blod'>{{room.roomLayout}}</view>
+    <view>{{room.roomFeature=='整租'? "整租" : "合租"}}</view>
+  </view>
+  <view class='info-view-item'>
+    <view class='item-blod'>{{room.roomFloorTop}}</view>
+    <view>{{room.roomFloorOn}}</view>
+  </view>
+</view>
+<view class='row-view'>
+  <view  wx:if='{{apiVersion == "v.final"}}'>
+    <view class='info-view-item item-margin-left20'  style='vertical-align: top;'>配套：</view>
+    <view class='info-view-item item-support'>
+      <block wx:for='{{room.supportList}}' wx:key='' wx:for-item='item'>
+        <view class='row-view-btn'>{{item}}</view>
+      </block>
+    </view>
+  </view>
+  <view  wx:if='{{apiVersion == "v.beta"}}'>
+    <view class='info-view-item item-margin-left20'>记录时间：</view>
+    <view class='info-view-item item-margin-left20'>{{room.createTime}}</view>
+  </view>
+  <view  wx:if='{{apiVersion == "v.final"}}'>
+    <view class='info-view-item item-margin-left20'>面积：</view>
+    <view class='info-view-item item-margin-left20'>{{room.roomArea}} m²</view>
+  </view>
+  <view>
+    <view class='info-view-item item-margin-left20'>{{apiVersion=='v.final'?"类型":"游记特色"}}：   </view>
+    <view class='info-view-item item-margin-left20'>{{room.roomFeature}}</view>  
+  </view> 
+  <view  wx:if='{{apiVersion == "v.final"}}'>
+    <view class='info-view-item item-margin-left20'>朝向：</view>
+    <view class='info-view-item item-margin-left20'>朝{{room.roomOrientation}}</view>
+  </view>
+  <view>
+    <view class='info-view-item item-margin-left20'>{{apiVersion=='v.final' ? "租客" : "适合人群"}}：</view>
+    <view class='info-view-item item-margin-left20'>{{room.roomRenter}}</view>
+  </view>
+  <view>
+    <view class='info-view-item item-margin-left20'>{{apiVersion=="v.final"?"装修":"类型"}}：</view>
+    <view class='info-view-item item-margin-left20'>{{room.roomDecorate}}</view>
+  </view>
+</view>
+<view class='row-view'>
+  <view  wx:if='{{apiVersion == "v.final"}}'>
+    <view class='info-view-item item-margin-left20'>所属区域：</view>
+    <view class='info-view-item item-margin-left20'>{{room.areaTown}}</view>
+  </view>
+  <view  wx:if='{{apiVersion == "v.final"}}'>
+    <view class='info-view-item item-margin-left20'>邻近地铁：</view>
+    <view class='info-view-item item-margin-left20'>{{room.areaMetro}}</view>
+  </view>
+  <view>
+      <map id='roomMap' scale='13' show-location markers='{{markers}}' longitude='{{markers[0].longitude}}' latitude='{{markers[0].latitude}}' data-latitude='{{markers[0].latitude}}' data-longitude='{{markers[0].longitude}}' bindcallouttap='bindOpenLocation' bindmarkertap='bindOpenLocation'></map>
+      <view class='item-margin-left20' wx:if='{{apiVersion == "v.final"}}'><text class='iconfont icon-dingwei' style='color: #e79a37;'></text>亲，小区距离您当前位置{{yourDistance}}</view>
+      <view class='item-margin-left20' wx:else><text class='iconfont icon-dingwei' style='color: #e79a37;'></text>亲，该地方距离您当前位置{{yourDistance}}</view>
+  </view>
+  
+</view>
+<view class='row-view'>
+  <view style='padding:16px 4px;margin-bottom:30px;'>
+    {{room.postContent}}
+  </view>
+</view>
+<view class='footer-tips' wx:if='{{apiVersion == "v.final"}}' >
+  <view class='tip-title'>--温馨提示--</view>
+  <view class='tip-content-view'>
+    <view class='tip-content'>
+      各位小哥哥小姐姐好，本房源信息由发布者自行发布，本平台只提供房源信息的展现交流空间，房源信息仅代表发布者的个人意愿，与平台无关。择木栖C平台只是用于信息展示，有关房源详情请与发布者联系。择木栖C提醒您，如要线下看房、租房请注意个人与财产安全，强烈建议您与发布者确认并核实信息的情况下，签订相关有效并具备法律效应的租赁合同哟！
+    </view>
+  </view>
+</view>

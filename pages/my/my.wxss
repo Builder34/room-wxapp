@@ -1,0 +1,60 @@
+@import '../../components/item2/item2.wxss';
+
+.userinfo-container {
+  box-sizing: border-box;
+  background: #f2f2f2;
+  padding: 10rpx 0;
+  height: 106px;
+} 
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 12rpx;
+  border-radius: 50%;
+}
+.userinfo-nickname {
+  color: #aaa;
+}
+#my-swiper {
+  height: auto;
+  width: 100%;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.swiper-tab{
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  width: 100%;
+  height: 44px;
+  line-height: 44px;
+  font-size: 34rpx;
+  border-bottom: 2rpx solid #ccc;
+  text-align: center;
+}
+.swiper-tab-item {
+    color:#434343;
+}
+.swiper-tab-item-active {
+  color:#f6d048;
+  border-bottom: 4rpx solid #f6d048;
+}
+
+
+
+
+.nothings-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nothings-text{
+  color:#f6d048;
+  text-align: center;
+}

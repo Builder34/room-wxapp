@@ -1,0 +1,118 @@
+/* pages/publish/base.wxss */
+@import '../../components/upload/uploadview.wxss';
+.publish-header{
+  height: 150px;
+}
+.row-view{
+  min-height: 1.8rem;
+  margin-bottom: 30rpx;
+}
+.row-view-title{
+  font-size: 36rpx;
+  width: 84%;
+  margin: auto;
+  border-bottom: 1rpx solid #f6d048;
+  padding: 15rpx 10rpx;
+}
+.row-view textarea{
+  width: 86%;
+  margin: auto;
+  min-height: 180rpx;
+  border-bottom: 1rpx solid #f6d048;
+}
+.row-view-label{
+  display: inline-block;
+  width: 120rpx;
+  min-height: inherit;
+  line-height: 1.8rem;
+  text-align: left;
+  vertical-align: middle;
+  color: #707070;
+  padding-left: 36rpx;
+}
+.row-view-input{
+  display: inline-block;
+  border-bottom: 1px solid #f2f2f2;
+  width: 70%;
+  min-height: inherit;
+  line-height: 1.8rem;
+  text-align: left;
+  margin-bottom: 10rpx;
+}
+.row-view-input2{
+  display: inline-block;
+  line-height: 1.8rem;
+  min-height: inherit;
+  margin-left: 10rpx;
+}
+.row-view-input2 input{
+  vertical-align: middle;
+  margin: 0 15rpx;
+}
+.row-view-input-sm{
+  width: 20% !important;
+  margin: 0 20rpx;
+  padding: 0 20rpx;
+}
+.row-view-input input{
+  text-align: center;
+}
+.input-length-sm{
+  display: inline-block;
+  width: 100rpx;
+}
+.row-view-checkbox{
+  display: inline-block;
+  padding-left: 40px;
+}
+.row-view-input text{
+  display: inline-block;
+  padding-left: 30rpx;
+  width: auto;
+  line-height: 1rem;
+}
+.row-view-support{
+  vertical-align:top;
+  padding-left: 36rpx;
+  margin-left: 50rpx;
+  width: 84% !important;
+}
+.row-view-tip{
+  text-align: center ;
+  min-height: 1.1rem ;
+  font-size: 24rpx;
+  background: #ffffff ;
+}
+.row-view-btn{
+  display: inline-block;
+  width: 126rpx;
+  height: 42rpx;
+  line-height: 40rpx;
+  font-size: 24rpx;
+  text-align: center;
+  padding: 5rpx;
+  margin-right: 15rpx;
+  margin-bottom: 16rpx;
+  border-radius: 12rpx;
+
+  border: 1rpx solid #8a8a8a;
+  color: #8a8a8a;
+}
+
+.row-view-btn-sm{
+  width: 80rpx;  
+}
+.row-view-btn-active{
+  border: 1rpx solid #f6d048 !important;
+  color: #f6d048 !important;
+}
+.row-view-submit{
+  margin: auto;
+  width: 360rpx;
+}
+.submit-btn{
+  width: 300rpx;
+  height: 74rpx;
+  line-height: 74rpx;
+  background-color: #f6d048 !important;
+}

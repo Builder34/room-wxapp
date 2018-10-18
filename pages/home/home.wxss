@@ -1,0 +1,38 @@
+/* pages/home/home.wxss */
+@import '../../components/searchbar/searchbar.wxss';
+@import '../../components/item/item.wxss';
+
+.home-list {
+  position: absolute;
+  left: 0;
+  top: 88px;
+}
+.home-create-room {
+  position: fixed;
+  bottom: 110px;
+  right: 15px;
+  background: rgba(0,0,0,0.48);
+  border-radius: 50%;
+  width: 60rpx;
+  height: 60rpx;
+  z-index: 500;
+  padding: 10rpx;
+  color: #f6d048;
+  box-shadow: 0 0 8rpx 8rpx #f6d048;
+}
+.home-create-room text{
+  display: inline-block;
+  width: inherit;
+  height: inherit;
+  text-align: center;
+  line-height: 28rpx;
+  font-size: 22rpx;
+  margin: auto;
+  vertical-align: middle;
+}
+.loading-more{
+  text-align: center;
+  color: #9E9E9E;
+  padding: 0 10rpx 20rpx 10rpx;
+  font-size: 16px;
+}

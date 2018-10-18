@@ -1,0 +1,25 @@
+<template name='zim-room-item'>
+  <view class='room-item-view' bindtap='bindRoomDetail' data-id='{{item.id}}'>
+    <image class="item-cover" src="{{item.mediaList[0]}}" mode="aspectFill"></image>
+    <view class='item-info'>
+      <view class='item-info-title'>
+        {{item.postTitle}}
+        <text wx:if='{{apiVersion=="v.final"}}'>[{{item.roomFeature=='整租'?'整租':'合租'}}]</text>
+      </view>
+      <view class='item-info-desc' wx:if='{{apiVersion=="v.final"}}'>
+        <text>{{item.areaTown}}</text>
+        <text style='margin-left:24rpx;'>{{item.areaMetro}}</text>
+      </view>
+      <view class='item-info-desc' wx:else>
+        <text>{{item.roomDecorate}}</text>
+        <text style='margin-left:24rpx;'>{{item.updateTime}}</text>
+      </view>
+      <view class='item-info-pv'>
+        <text>{{item.pvCount}}次浏览</text>
+      </view>
+      <view class='item-info-price' wx:if='{{apiVersion=="v.final"}}'>
+        <text>￥{{item.rentalPrice}}元/月</text>
+      </view>
+    </view>
+  </view>
+</template>

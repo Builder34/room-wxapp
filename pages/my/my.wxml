@@ -1,0 +1,47 @@
+<import src="../../components/item2/item2.wxml" />
+<view class="userinfo-container">
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 登录授权 </button>
+    <block wx:else>
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+</view>
+<view class='swiper-tab'>
+  <view class='swiper-tab-item {{currentTab==0?"swiper-tab-item-active":""}}' style='width:{{hasPublishPower ? windowWidth/3 : windowWidth/2}}px;' data-current='0' bindtap='checkSwiperTab'>已收藏</view>
+  <view class='swiper-tab-item {{currentTab==1?"swiper-tab-item-active":""}}' style='width:{{hasPublishPower ? windowWidth/3 : windowWidth/2}}px;' data-current='1' bindtap='checkSwiperTab'>通知</view>
+  <view class='swiper-tab-item {{currentTab==2?"swiper-tab-item-active":""}}' style='width:{{windowWidth/3}}px;' wx:if='{{hasPublishPower}}' data-current='2' bindtap='checkSwiperTab'>我的发布</view>
+</view>
+<view style='width:{{windowWidth}}px; margin-top:3px;'>
+  <view class='star-container' wx:if='{{currentTab==0}}' >
+    <view class='nothings-container' wx:if='{{starData.length == 0}}'>
+      <image class="userinfo-avatar" src='/images/no-notice.png' mode="aspectFill" background-size="cover"></image> 
+      <text class='nothings-text'>暂无任何收藏哟！</text>
+    </view>
+    <view wx:else>
+      <block wx:for='{{starData}}' wx:for-item='item' wx:key="">
+      <template is='zim-room-item2'  data='{{currentTab:currentTab, item:item, windowWidth: windowWidth, index: index, apiVersion: apiVersion}}' />
+      </block>
+    </view>
+  </view>
+  <view class='notice-container' wx:if='{{currentTab==1}}'>
+    <view class='nothings-container'>
+      <image class="userinfo-avatar" src='/images/no-notice.png' mode="aspectFill" background-size="cover"></image> 
+      <text class='nothings-text'>暂无任何通知哟！</text>
+    </view>
+  </view>
+  <view class='publish-container' wx:if='{{currentTab==2}}'>
+    <view wx:if='{{publishData.length==0}}'>
+      <view class='nothings-container'>
+        <image class="userinfo-avatar" src='/images/no-publish.png' mode="aspectFill" background-size="cover"></image> 
+        <text class='nothings-text'>您还未发布过任何房源！</text>
+      </view>
+    </view>
+    <view wx:else>
+      <block wx:for='{{publishData}}' wx:for-item='item' wx:key="">
+        <template is='zim-room-item2'  data='{{currentTab:currentTab, item:item, windowWidth: windowWidth, index: index}}' />
+      </block>
+    </view>
+  </view>
+</view>

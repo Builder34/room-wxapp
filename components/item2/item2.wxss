@@ -1,0 +1,52 @@
+.room-item-view2 {
+  border-top: 1px solid #f2f2f2;
+  border-bottom: 1px solid #f2f2f2;
+  z-index: 99; 
+  position: absolute; 
+  background: #ffffff;
+}
+.room-item-view2-info{
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 16rpx;
+  width: 70%;
+  line-height: 18px;
+}
+.room-item-view2 image{
+  width: 140rpx;
+  height: 140rpx;
+  margin: 5px 5px 1px 5px;
+}
+.item-title{
+  margin-top: 3px;
+}
+.item-subTitle{
+  font-size: 24rpx;
+  color: #9e9e9e;
+}
+.item-bottom{
+  margin-top: 6rpx;
+}
+.item-bottom view{
+  display: inline-block;
+  width: 260rpx;
+  text-align: right;
+}
+.item-price{
+  color: #CD3700;
+  font-size: 26rpx;
+}
+.right-btn{
+  z-index: 1;
+  height: 82px;
+  border-top: 1px solid #ffffff;
+  border-bottom: 1px solid #ffffff;
+  width: 40px;
+  background: #e79a37;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}

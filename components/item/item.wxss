@@ -1,0 +1,72 @@
+.room-item-view{
+  background: #f2f2f2;
+  width: 98%;
+  overflow: hidden;
+  border-radius: 10rpx;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 12rpx;
+  color: #fff;
+  font-weight: 600;
+  position: relative;
+}
+
+.item-cover{
+  height: 352rpx;
+  width: 100%;
+  vertical-align: bottom;
+}
+.item-info {
+  position: absolute;
+  left: 5px;
+  top: 0;
+  padding-left:30rpx;
+  padding-top: 12rpx;
+  width: 92%;
+  height: inherit;
+}
+.item-info-title{
+  text-shadow: 2rpx 2rpx rgba(0,0,0,20);
+  font-size: 32rpx;
+  overflow: hidden;
+  text-overflow: ellipsis; /**超出省略号代替*/
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  vertical-align: middle;
+}
+.item-info-desc::before{
+  content: '';
+  width: 6rpx;
+  height: 100%;
+  border-right: 1rpx;
+  background-color: #e79a37;
+  position: absolute;
+  left: 4rpx;
+  top: 2rpx;
+}
+.item-info-desc {
+  padding-left: 18rpx;
+  position: relative;
+  vertical-align: middle;
+}
+.item-info-desc text {
+  text-shadow: 2rpx 2rpx rgba(0,0,0,20);
+  font-size: 26rpx;
+}
+.item-info-pv {
+  position: relative;
+  display: inline-block;
+  margin-top: 178rpx;
+  text-shadow: 0 0 4px #e79a37;
+  padding-right: 20rpx; 
+  text-align: left;
+}
+.item-info-price {
+  display: inline-block;
+  margin-left: 48%;
+  font-weight: bold;
+  text-shadow: 0 0 4px #e79a37;
+  padding-right: 20rpx; 
+  text-align: right;
+}

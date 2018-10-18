@@ -1,0 +1,25 @@
+<template name='zim-room-item2'>
+<view class='room-item-view2' style='{{item.itemStyle}};width:{{windowWidth}}px' bindtouchstart='bindLeftScrollStart' bindtouchmove='bindLeftScrollMove' bindtouchend='bindLeftScrollEnd' data-id="{{item.id}}" data-index="{{index}}" bindtap='bindRoomDetail' data-id='{{item.id}}'>
+  <image src="{{item.mediaList[0]}}"  mode='aspectFill'></image>
+  <view class='room-item-view2-info'>
+    <view class='item-title'>
+      {{item.postTitle}}<text wx:if='{{item.status==1}}'>(已出租)</text>
+    </view>
+    <view class='item-subTitle'>{{item.areaTown}}</view>
+    <view class='item-subTitle'>{{item.areaMetro}}</view> 
+    <view class='item-subTitle item-bottom'>
+      <view style='text-align:center'>{{item.pvCount}}次浏览</view>
+      <view class='item-price' wx:if='{{apiVersion=="v.final"}}'>￥{{item.rentalPrice}} 元/月</view> 
+    </view>
+  </view>
+</view>
+<view class='room-item-btn-view'>
+  <view style='left: {{windowWidth-40}}px' class='right-btn' catchtap='catchRemoveStar' data-id='{{item.id}}' wx:if='{{currentTab==0}}'>
+    <view>取消收藏</view>
+  </view>
+  <block wx:else>
+    <view catchtap='catchModifyRoom' data-id='{{item.id}}'>修改</view>
+    <view catchtap='catchDeleteRoom' data-id='{{item.id}}'>删除</view>
+  </block>
+</view>
+</template>

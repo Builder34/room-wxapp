@@ -1,0 +1,5 @@
+<view class='video-container' style='width:{{windowWidth}}px;height:{{windowHeight}}px;'>
+  <video id="prew_video" src="{{videoUrl}}" objectFit='contain'
+    style='width:{{windowWidth}}px;height:{{windowHeight/2.86}}px;'>
+  </video>
+</view>

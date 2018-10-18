@@ -1,0 +1,16 @@
+<!--pages/home/home.wxml-->
+<import src="../../components/searchbar/searchbar.wxml" />
+<import src="../../components/item/item.wxml" />
+<template is='zim-searchbar' data='{{downmenu: downmenu, apiVersion: apiVersion}}'/> 
+<scroll-view class='home-list' style='height:{{windowHeight-88}}px;width:{{windowWidth}};' scroll-x='false' scroll-y='true' bindscrolltoupper='bindLoadMore' bindscolltolower='bindRefreshFirstPage' >
+  <block wx:for='{{roomList}}' wx:for-item='item' wx:key=''>
+    <template is='zim-room-item' data='{{item: item, apiVersion: apiVersion}}' />
+  </block>
+  <view class='loading-more'>{{isNoMore? (apiVersion=="v.final"?"已无更多房源":"已无更多记录") : "正在加载..."}}</view>
+  <view class='home-create-room' 
+    wx:if='{{hasPublishPower}}'>
+    <navigator url="/pages/publish/base" hover-class="navigator-hover">
+      <text>{{apiVersion=='v.final'? "发布房源" : "记录美好"}}</text>
+    </navigator>
+  </view>
+</scroll-view>

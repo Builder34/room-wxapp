@@ -1,0 +1,135 @@
+<!--pages/publish/base.wxml-->
+<import src="../../components/upload/uploadview.wxml" />
+<view style='padding-bottom:40rpx;'>
+  <view class='row-view'>
+    <view class='row-view-title'>
+      <input class='' type='text' confirm-type='done' placeholder='{{apiVersion=="v.final"?"房源标题":"标题"}}' bindinput='bindTitleInput' />
+    </view>
+  </view>
+  <view class='row-view'>
+    <textarea auto-height placeholder='{{apiVersion=="v.final"?"房源描述，小区环境，出租要求等":"介绍你喜欢这些风景，事物的情况"}}' maxlength='1024'
+    placeholder-style='color:#bfbfbf;' bindinput='bindContentInput'></textarea>
+  </view>
+  <template is='zim-upload-view' data='{{fileTemps: fileTempArray}}'/>
+  <view class='row-view'>
+    <text class='row-view-label'>{{apiVersion=="v.final"?"小区":"所在位置"}}</text>
+    <view class='row-view-input' bindtap='bindChooseLocation'>
+      <text class='{{communityName=="" ? "input-placeholder" : ""}}'>
+        {{communityName==''? "点击打开地图寻找地址" : communityName}}
+      </text>
+    </view>
+    <text class='iconfont icon-dingwei' bindtap='bindChooseLocation' style='font-size:40rpx;color:#f6d048;'></text>
+    <view class='row-view-tip' wx:if='{{communityAddress!=""}}'>({{communityAddress}})</view>
+  </view>
+  <view class='row-view' wx:if='{{apiVersion=="v.final"}}'>
+    <text class='row-view-label'>区域</text>
+    <view class='row-view-input'>
+      <input class='' type='text' confirm-type='done' placeholder='区域，例如：天河·珠江新城西' bindinput='bindTownInput' />
+    </view>
+  </view>
+  <view class='row-view' wx:if='{{apiVersion=="v.final"}}'>
+    <text class='row-view-label'>地铁</text>
+    <view class='row-view-input'>
+      <input class='' type='text' confirm-type='done' placeholder='3号线·珠江新城 365米' bindinput='bindMetroInput' />
+    </view>
+  </view>
+  <view class='row-view' wx:if='{{apiVersion=="v.final"}}'>
+    <text class='row-view-label' style='min-width:300rpx;'>配套设施(可多选)</text>
+    <view class='row-view-input row-view-support'>
+        <block wx:for='{{supportArray}}' wx:for-item='dict' wx:key='dictDataMap.room_support.dictDataCode'>
+          <view  bindtap='bindCheckboxSupport' data-index='{{index}}'
+        class='row-view-btn {{dict.checked==true ? "row-view-btn-active" : ""}}'>
+            {{dict.dictDataName}}
+          </view>
+        </block>
+    </view>
+  </view>
+  <view class='row-view'>
+    <text class='row-view-label'>{{apiVersion=='v.final'?"类型":"游记特色"}}</text>
+    <view class='row-view-checkbox'>
+        <block wx:for='{{dictDataMap.room_feature}}' wx:for-item='dict' wx:key='dictDataMap.room_feature.dictDataCode'>
+          <view data-name='{{dict.dictDataName}}' bindtap='bindRadioRoomFeature' 
+          class='row-view-btn {{feature==dict.dictDataName ? "row-view-btn-active" : ""}}'>
+            {{dict.dictDataName}}
+          </view>
+        </block>
+    </view>
+  </view>
+  <view class='row-view' wx:if='{{apiVersion=="v.final"}}'>
+    <text class='row-view-label'>卧室楼层</text>
+    <view class='row-view-input2'>
+    <input class='input-length-sm' bindinput='bindFloorInput' type='number' confirm-type='done' placeholder='所在层' />/
+    <input class='input-length-sm' bindinput='bindTopFloorInput' type='number' confirm-type='done' placeholder='最高层' />
+    </view>
+  </view>
+  <view class='row-view' wx:if='{{apiVersion=="v.final"}}'>
+    <text class='row-view-label'>卧室面积</text>
+    <view class='row-view-input row-view-input-sm'>
+    <input type='digit' bindinput='bindAreaInput' confirm-type='done' />
+    </view>平米
+  </view>
+  <view class='row-view'>
+    <text class='row-view-label'>{{apiVersion=="v.final"?"装修":"类型"}}</text>
+    <view class='row-view-checkbox'>
+        <block wx:for='{{dictDataMap.room_decorate}}' wx:for-item='dict' wx:key='dictDataMap.room_decorate.dictDataCode'>
+          <view bindtap='bindRadioDecorate' data-name='{{dict.dictDataName}}' 
+          class='row-view-btn {{decorate==dict.dictDataName ? "row-view-btn-active" : ""}}'>
+            {{dict.dictDataName}}
+          </view>
+        </block>
+    </view>
+  </view>
+  <view class='row-view' wx:if='{{apiVersion=="v.final"}}'>
+    <text class='row-view-label'>户型</text>
+    <view class='row-view-input row-view-support'>
+        <block wx:for='{{dictDataMap.room_layout}}' wx:for-item='dict' wx:key='dictDataMap.room_layout.dictDataCode'>
+          <view bindtap='bindRadioLayout' data-name='{{dict.dictDataName}}' 
+          class='row-view-btn {{layout==dict.dictDataName ? "row-view-btn-active" : ""}}'>
+            {{dict.dictDataName}}
+          </view>
+        </block>
+    </view>
+  </view>
+  <view class='row-view' wx:if='{{apiVersion=="v.final"}}'>
+    <text class='row-view-label'>朝向</text>
+    <view class='row-view-checkbox'>
+        <block wx:for='{{dictDataMap.room_orientation}}' wx:for-item='dict' wx:key='dictDataMap.room_orientation.dictDataCode'>
+          <view bindtap='bindRadioOrientation' data-name='{{dict.dictDataName}}'
+          class='row-view-btn row-view-btn-sm {{orientation==dict.dictDataName ? "row-view-btn-active" : ""}}'>
+            {{dict.dictDataName}}
+          </view>
+        </block>
+    </view>
+  </view>
+  <view class='row-view'>
+    <text class='row-view-label'>{{apiVersion=='v.final' ? "室友" : "适合人群"}}</text>
+    <view class='row-view-checkbox'>
+        <block wx:for='{{dictDataMap.room_renter}}' wx:for-item='dict' wx:key='dictDataMap.room_renter.dictDataCode'>
+          <view bindtap='bindRadioRenter' data-name='{{dict.dictDataName}}' 
+          class='row-view-btn {{renter==dict.dictDataName ? "row-view-btn-active" : ""}}'>
+            {{dict.dictDataName}}
+          </view>
+        </block>
+    </view>
+  </view>
+  <view class='row-view' wx:if='{{apiVersion=="v.final"}}'>
+    <text class='row-view-label'>付款</text>
+    <view class='row-view-checkbox'>
+        <block wx:for='{{dictDataMap.room_paytype}}' wx:for-item='dict' wx:key='dictDataMap.room_paytype.dictDataCode'>
+          <view  bindtap='bindRadioPaytype' data-name='{{dict.dictDataName}}' 
+          class='row-view-btn row-view-btn-sm {{paytype==dict.dictDataName ? "row-view-btn-active" : ""}}'>
+            {{dict.dictDataName}}
+          </view>
+        </block>
+    </view>
+  </view>
+  <view class='row-view' wx:if='{{apiVersion=="v.final"}}'>
+    <text class='row-view-label'>租金</text>
+    <view class='row-view-input row-view-input-sm'>
+    <input type='digit' bindinput='bindPriceInput' confirm-type='done' />
+    </view> 元/月
+  </view>
+  <view class='row-view-submit'>
+    <button class='submit-btn' type='primary' bindtap='bindToPublish' >提交</button>
+  </view>
+</view>

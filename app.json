@@ -1,12 +1,15 @@
 {
-  "pages":[
-    "pages/index/index",
-    "pages/logs/logs"
+  "pages": [
+    "pages/home/home",
+    "pages/my/my",
+    "pages/home/detail",
+    "pages/publish/base",
+    "pages/media/video"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#f6d048",
+    "navigationBarTitleText": "择木栖C",
+    "navigationBarTextStyle": "white"
   }
 }

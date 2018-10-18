@@ -1,0 +1,31 @@
+
+<template name='zim-searchbar'>
+  <view class='search-view'>
+    <view class='search-bar'>
+      <view class='search-bar-location' bindtap='bindLocation'>
+        <text class='iconfont icon-dingwei header-icon'></text>广州
+      </view>
+      <view class='search-bar-input'>
+        <icon type='search' size='22' bindtap='bindQueryHandler'></icon>
+        <input class='' placeholder='{{apiVersion == "v.beta" ? "请输入你想去的地方" :"请输入您想住的小区或区域"}}' bindinput='bindQueryInput' confirm-type='search' bindconfirm='bindQueryHandler'></input>
+      </view>
+      <view>
+        <text class='iconfont icon-my3 header-icon' bindtap='bindGotoMyPage'></text>
+      </view>
+    </view>
+
+    <view class='search-condition'>
+      <view class='search-condition-item {{item.active?"active":""}}' wx:for='{{downmenu}}' wx:for-item='item' wx:key="" data-index="{{index}}" bindtap='bindFilterChoose'>
+        <text>{{item.text}}</text>
+        <image src='../../images/{{item.icon}}{{item.checkedValue!=""?"-checked":""}}.png'></image>
+      </view>
+    </view>
+    <!-- tab下拉选项布局 -->
+    <view class="search-condition-layout" hidden="{{!item.active}}" wx:for="{{downmenu}}"  wx:for-item="item" wx:key="" data-index="{{index}}" >
+        <view class="{{item.checkedValue==item_child.value?'item-active':''}}" wx:for="{{item.child}}" wx:for-item="item_child" wx:key="" data-index='{{item_child.parentId}}' data-value="{{item_child.value}}" bindtap="bindFilterSearch">
+        {{item_child.text}}
+        </view>
+    </view>
+    
+  </view>
+</template>

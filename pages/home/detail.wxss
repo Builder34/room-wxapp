@@ -1,0 +1,141 @@
+page{
+  color: #9E9E9E;
+}
+.image-swiper{
+  height: 420rpx;
+}
+.image-swiper image{
+  width: 100%;
+  height: 100%;
+}
+.swiper-star{
+  display:inline-block;
+  position: absolute;
+}
+.swiper-star text{
+  font-size: 60rpx;
+  line-height: 60rpx; 
+  color: #f6d048;
+}
+.swiper-star .unstared{
+  color: #ffffff !important;
+}
+
+.swiper-footers{
+  color: #fff;
+  border: 1px solid #f2f2f2;
+  display:inline-block;
+  position: absolute;
+  padding: 2rpx 10rpx;
+  border-radius: 6rpx;
+  font-size: 12px;
+  line-height: 12px;
+}
+.room-title-view{
+  padding: 16rpx 20rpx;
+  font-size: 40rpx;
+  color: #4F4F4F;
+}
+.row-view{
+  width: 96%;
+  padding: 20rpx 0;
+  margin: 0 auto;
+  border-bottom: 1px solid #f2f2f2;
+}
+.creator-view-item{
+  display: inline-block;
+  margin-right: 20rpx;
+  vertical-align: middle;
+  font-size: 28rpx;
+}
+.create-by{
+  color: #4F4F4F;
+}
+.pv-text{
+  color: #9E9E9E;
+  padding-left: 42rpx;
+  font-size: 12px;
+}
+.creator-profile{
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+}
+.creator-contact-view{
+  margin-left: 20rpx;
+  vertical-align: middle;
+  display: flex;
+  justify-content:space-between;
+  align-items:center;
+  width: 276rpx;
+  height: 100rpx;
+}
+.creator-contact-view text{
+  font-size: 60rpx;
+  line-height: 60rpx; 
+  color: #f6d048;
+}
+.unstared{
+  color: #C2C2C2 !important;
+}
+.info-view{
+  display: flex;
+  justify-content: space-around;
+}
+.info-view-item{
+  display: inline-block;
+  text-align: center;
+}
+.item-red{
+  color: #CD3700 !important;
+}
+.item-blod{
+  font-weight: bold;
+  font-size: 30rpx;
+  color: #4F4F4F;
+}
+.item-margin-left20{
+  margin-left: 16px;
+  padding: 5rpx;
+}
+.item-support{
+  width: 76%;
+  text-align: left;
+  margin-left: 20px;
+}
+.row-view-btn{
+  display: inline-block;
+  min-width: 80rpx;
+  height: 42rpx;
+  line-height: 40rpx;
+  font-size: 24rpx;
+  text-align: center;
+  padding: 5rpx;
+  margin-right: 15rpx;
+  margin-bottom: 16rpx;
+  border-radius: 12rpx;
+  border: 1rpx solid #f6d048;
+  color: #f6d048;
+  /* color: #8a8a8a; */
+}
+#roomMap{
+  width: 100%;
+  height: 180px;
+}
+.tip-title{
+  text-align: center;
+  color: #FF82AB;
+}
+.tip-content-view{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.tip-content{
+  display: inline-block;
+  width: 92%;
+  margin: 5px;
+  font-size: 11px;
+  color: #B0B0B0;
+  padding: 10rpx 0;
+}
